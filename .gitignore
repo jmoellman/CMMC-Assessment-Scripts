@@ -2,6 +2,8 @@
 __pycache__/
 *.pyc
 *.log
+!CMMC_Art_Hash_GUI_App/CMMCAssessmentArtifacts.log
+!CMMC_Art_Hash_GUI_App/CMMCAssessmentLogHash.log
 build/
 dist/
 *.spec
