@@ -1,0 +1,9 @@
+CMMC Evidence Prefix Manager
+Version 1.2
+Released 2026-09-07
+
+Version 1.1 adds multiple evidence-folder selection and preserves each selected
+folder as a separate top-level folder in the refined export.
+
+Version 1.2 adds support for descriptive DRL headers, including Ignyte's
+"ERL # (Suggested identifier for the evidence)" column.

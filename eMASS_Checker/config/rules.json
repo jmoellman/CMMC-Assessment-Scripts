@@ -1,0 +1,69 @@
+{
+  "_readme": "Editable rule settings for the eMASS Results Checker. Use Settings > Edit Rules in the app (your copy is saved to %APPDATA%\\eMASS_Checker\\rules.json). Keep valid JSON: double quotes, commas between items.",
+
+  "openers": {
+    "Examine": ["The assessment team reviewed", "The assessment team examined"],
+    "Test": ["The assessment team validated"],
+    "Overall Comments": ["The assessment team confirmed"]
+  },
+
+  "findings": {
+    "labels": {"MET": "MET", "NOT MET": "NOT MET", "NOT APPLICABLE": "N/A"},
+    "separator": ":",
+    "max_summary_chars": 1000,
+    "met_weakness_terms": ["however", "but ", "although", "though", "weakness", "gap", "observation", "observed that", "not fully", "partially", "lack", "lacks", "lacking", "missing", "incomplete", "inconsistent", "did not", "does not", "was not", "were not", "no evidence", "not provided", "not documented", "deficien", "minor issue", "noted that"],
+    "not_met_deficiency_terms": ["did not", "does not", "do not", "was not", "were not", "is not", "are not", "has not", "have not", "no evidence", "not provided", "not demonstrated", "not documented", "not implemented", "not configured", "not enforced", "not defined", "not identified", "lacks", "lacked", "missing", "absent", "failed", "unable", "insufficient", "no documented", "no record"],
+    "na_reason_terms": ["because", "does not", "do not", "is not", "are not", "no ", "not used", "not permitted", "prohibit", "not present", "not within", "outside", "not applicable to", "not in scope", "not part of", "not utilized", "not employed", "not authorized"]
+  },
+
+  "actor_phrase": "the assessment team",
+  "actor_variants_replace": ["the assigned certified assessor", "the assigned certified assessors", "the certified assessor", "the assessors", "the assessor", "the assessing team", "the audit team", "the lead assessor", "the CCA", "the CCAs", "the C3PAO team", "the C3PAO assessment team"],
+  "actor_variants_flag": ["\\b[Ww]e\\b", "\\b[Oo]ur\\b", "\\bus\\b", "\\bI\\b(?![.\\-])", "\\b[Aa]uditors?\\b"],
+
+  "prohibited_remove_sentence": [
+    "should consider", "continuous improvement opportunity", "continuous improvement", "encouraged", "encourage", "encourages", "recommend", "recommends", "recommended", "recommendation", "recommendations", "best practice", "best practices", "additional enhancements", "plans to improve", "planned improvement", "although this did not affect the assessment", "this did not affect the assessment", "did not affect the determination", "opportunity for improvement", "opportunities for improvement", "area for improvement", "areas for improvement", "for awareness", "for situational awareness", "noted for awareness", "awareness only", "it is advised", "is advised to", "is advisable", "suggest", "suggests", "suggested", "going forward", "in the future"
+  ],
+  "prohibited_flag": ["\\bshould\\b", "\\bcould be improved\\b", "\\bmay want to\\b", "\\bmight\\b", "\\benhance(ment|ments|d)?\\b", "\\bimprove(ment|ments)?\\b"],
+  "status_terms_flag_case_sensitive": ["PARTIAL", "PENDING", "Partially Met", "PARTIALLY MET", "Partial MET", "Pending", "TBD"],
+  "status_terms_flag": ["partially met", "MET via TD/EE", "MET via TD", "MET via EE", "via TD/EE", "Temporary Deficiency", "Enduring Exception", "TD/EE", "MET \\(TD\\)", "MET \\(EE\\)"],
+  "unsupported_qualifiers_flag": ["appears", "appear", "appeared", "appearing", "seems", "seem", "seemed", "seemingly", "likely", "unlikely", "apparently", "presumably", "possibly", "probably", "it is assumed", "assumed to", "may have", "might have", "generally", "mostly", "somewhat", "largely", "for the most part", "in most cases", "it is believed", "believed to"],
+  "filler_qualifiers_remove": ["very", "really", "quite", "basically", "essentially", "clearly", "obviously", "simply", "actually", "definitely", "certainly"],
+
+  "time_reference_patterns": [
+    "\\b(?:on|during|in|at)\\s+(?:the\\s+)?day\\s*(?:\\d+|one|two|three|four|five|six|seven)\\b(?:\\s+(?:session|walkthrough|meeting|call))?",
+    "\\bday\\s*(?:\\d+|one|two|three|four|five|six|seven)\\b",
+    "\\b(?:am|pm|morning|afternoon|evening)\\s+session\\b",
+    "\\b(?:this|that|the)\\s+(?:morning|afternoon|evening)\\b",
+    "\\b(?:monday|tuesday|wednesday|thursday|friday|saturday|sunday)\\b",
+    "\\b(?:yesterday|today|tomorrow|last week|next week|earlier this week)\\b",
+    "\\b\\d{1,2}:\\d{2}\\s*(?:[ap]\\.?m\\.?)?\\b",
+    "\\b\\d{1,2}\\s*[ap]\\.?m\\.?\\b",
+    "\\b\\d{4}\\s*(?:hours|hrs)\\b",
+    "\\b\\d{1,2}/\\d{1,2}/\\d{2,4}\\b",
+    "\\b(?:jan(?:uary)?|feb(?:ruary)?|mar(?:ch)?|apr(?:il)?|may|jun(?:e)?|jul(?:y)?|aug(?:ust)?|sep(?:t(?:ember)?)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?)\\.?\\s+\\d{1,2}(?:st|nd|rd|th)?(?:,\\s*\\d{4})?\\b"
+  ],
+  "time_reference_replacement": "during the assessment session",
+
+  "filename_pattern": "\\b[\\w\\-.()]+\\.(?:pdf|docx?|xlsx?|xlsm|pptx?|png|jpe?g|gif|bmp|csv|txt|msg|eml|zip|vsdx?|json|xml|html?)\\b",
+  "evidence_id_pattern": "\\b(?:ERL|ER|EVD|EV|REQ)[-_ ]?\\d{1,5}\\b",
+
+  "canonical_terms": [
+    "eMASS", "CMMC", "C3PAO", "OSC", "CUI", "FCI", "SSP", "POA&M", "SPRS", "ESP", "CSP", "MSP", "MSSP", "CRM", "DIBCAC", "FedRAMP", "FedRAMP Moderate", "FedRAMP High", "NIST", "NIST SP 800-171", "NIST SP 800-171A", "DFARS", "FIPS", "FIPS 140-2", "FIPS 140-3", "MFA", "VPN", "SIEM", "EDR", "XDR", "DLP", "RBAC", "SSO", "SAML", "LDAP", "TLS", "IPsec", "DNS", "DHCP", "VLAN", "Wi-Fi",
+    "Microsoft 365", "Microsoft 365 GCC High", "GCC High", "GCC", "Azure", "Azure Government", "Microsoft Entra ID", "Entra ID", "Azure AD", "Active Directory", "Group Policy", "Conditional Access", "Intune", "Microsoft Intune", "Microsoft Defender", "Defender for Endpoint", "Microsoft Purview", "Purview", "Microsoft Sentinel", "SharePoint", "OneDrive", "Microsoft Teams", "Exchange Online", "BitLocker", "Windows Server", "Windows 11", "Windows 10", "PowerShell", "LAPS",
+    "PreVeil", "KnowBe4", "CrowdStrike", "CrowdStrike Falcon", "SentinelOne", "Duo", "Cisco Duo", "Okta", "FortiGate", "Fortinet", "FortiClient", "Palo Alto", "SonicWall", "Meraki", "Splunk", "Datto", "ConnectWise", "NinjaOne", "Kaseya", "Veeam", "Barracuda", "Proofpoint", "Mimecast", "Tenable", "Nessus", "Qualys", "Rapid7", "Blumira", "Arctic Wolf", "Huntress", "Keeper", "LastPass", "1Password", "Bitwarden", "Zscaler", "Cloudflare", "AWS", "AWS GovCloud", "Google Workspace", "Ignyte"
+  ],
+  "term_variants": {
+    "emass": "eMASS", "e-mass": "eMASS", "poam": "POA&M", "poa&m": "POA&M", "poa & m": "POA&M", "poams": "POA&Ms", "c3pao": "C3PAO", "fedramp": "FedRAMP", "sharepoint": "SharePoint", "share point": "SharePoint", "onedrive": "OneDrive", "one drive": "OneDrive", "bitlocker": "BitLocker", "crowdstrike": "CrowdStrike", "knowbe4": "KnowBe4", "preveil": "PreVeil", "sentinelone": "SentinelOne", "fortigate": "FortiGate", "powershell": "PowerShell", "gcc-high": "GCC High", "gcc high": "GCC High", "entra id": "Entra ID", "entraid": "Entra ID", "microsoft365": "Microsoft 365", "m365": "Microsoft 365", "wifi": "Wi-Fi", "wi fi": "Wi-Fi", "e-mail": "email", "nist sp800-171": "NIST SP 800-171", "nist 800-171": "NIST SP 800-171", "sp 800-171": "SP 800-171"
+  },
+  "over_capitalized_phrases": ["Assessment Team", "Assessment Session", "Assessment session", "Technical Walkthrough"],
+
+  "spelling_whitelist": [
+    "cmmc", "emass", "osc", "oscs", "cui", "fci", "ssp", "ssps", "poa", "sprs", "esp", "esps", "csp", "csps", "msp", "msps", "mssp", "crm", "crms", "dibcac", "fedramp", "nist", "dfars", "fips", "mfa", "vpn", "vpns", "siem", "edr", "xdr", "dlp", "rbac", "sso", "saml", "ldap", "tls", "ipsec", "vlan", "vlans", "wi-fi", "intune", "entra", "bitlocker", "sharepoint", "onedrive", "powershell", "preveil", "knowbe", "crowdstrike", "sentinelone", "fortigate", "fortinet", "forticlient", "sonicwall", "meraki", "splunk", "datto", "connectwise", "ninjaone", "kaseya", "veeam", "proofpoint", "mimecast", "tenable", "nessus", "qualys", "blumira", "zscaler", "okta", "laps", "gcc", "gpo", "gpos", "ou", "ous", "rdp", "ssh", "smb", "ntp", "syslog", "syslogs", "admin", "admins", "sysadmin", "login", "logins", "logon", "logons", "logoff", "signoff", "username", "usernames", "passwordless", "timestamp", "timestamps", "screenshot", "screenshots", "screenshare", "walkthrough", "walkthroughs", "workflow", "workflows", "workstation", "workstations", "endpoint", "endpoints", "firewall", "firewalls", "cybersecurity", "onboarding", "offboarding", "onboarded", "offboarded", "deprovisioning", "deprovisioned", "provisioning", "auditable", "configurable", "misconfiguration", "misconfigurations", "subnet", "subnets", "multifactor", "antimalware", "antivirus", "encrypted", "decrypt", "plaintext", "hashing", "sanitization", "sanitized", "uptime", "backup", "backups", "dropdown", "checkbox", "url", "urls", "ip", "ips", "mdm", "byod", "iot", "ot", "it", "hr", "ceo", "cfo", "cio", "ciso", "cto", "pm", "fso", "isso", "issm", "itar", "ear", "dod", "dib", "cage", "uei", "sam", "cpn", "cca", "ccas", "ccp", "rpo", "cyberab", "erl", "jaf", "ignyte", "cmmc's", "osc's", "esp's", "iso", "soc", "pii", "phi", "saas", "iaas", "paas", "api", "apis", "sms", "otp", "totp", "fido", "yubikey", "yubikeys", "authenticator", "smartcard", "piv", "cac", "rmm", "nac", "ids", "ips", "utm", "dmz", "nat", "acl", "acls", "sha", "md", "aes", "rsa", "pki", "cert", "certs", "https", "sftp", "ftps", "vdi", "avd", "wvd", "ad", "aad", "dc", "dcs", "ntfs", "nas", "san", "usb", "usbs", "byol", "sop", "sops", "irp", "bcp", "drp", "cmp", "ccb", "mou", "moa", "isa", "nda", "rof", "sla", "slas"
+  ],
+
+  "contractions": {"don't": "do not", "doesn't": "does not", "didn't": "did not", "isn't": "is not", "aren't": "are not", "wasn't": "was not", "weren't": "were not", "can't": "cannot", "couldn't": "could not", "won't": "will not", "wouldn't": "would not", "shouldn't": "should not", "hasn't": "has not", "haven't": "have not", "hadn't": "had not", "it's": "it is", "they're": "they are", "there's": "there is", "that's": "that is"},
+
+  "max_sentence_words": 60,
+
+  "languagetool_disabled_rules": ["MORFOLOGIK_RULE_EN_US", "UPPERCASE_SENTENCE_START", "WHITESPACE_RULE", "COMMA_PARENTHESIS_WHITESPACE", "DOUBLE_PUNCTUATION", "ENGLISH_WORD_REPEAT_RULE", "EN_QUOTES", "DASH_RULE", "EN_UNPAIRED_BRACKETS", "PUNCTUATION_PARAGRAPH_END", "SENTENCE_WHITESPACE", "CONSECUTIVE_SPACES"]
+}

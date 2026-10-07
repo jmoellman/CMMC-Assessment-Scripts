@@ -1,0 +1,115 @@
+{
+  "_about": "Editable rules for the CMMC Pre-Assessment Package Checker. Edit values here instead of changing code. Keep valid JSON.",
+
+  "pre_assessment": {
+    "expected_template_versions": ["3.8"],
+    "input_header": "Input",
+    "guidance_header": "Acceptable Values",
+    "label_header": "Data Field",
+    "required_header": "Required/Optional",
+    "ignyte_owned_fields": ["contract_date", "plan_start", "plan_end", "standard"],
+    "fields": {
+      "hq_name":      "HQ Organization Name",
+      "uei":          "UEI",
+      "osc_name":     "OSC Name",
+      "addr1":        "OSC Address Line 1",
+      "addr2":        "OSC Address Line 2",
+      "addr3":        "OSC Address Line 3",
+      "city":         "OSC City",
+      "state":        "OSC State",
+      "zip":          "OSC Zip Code",
+      "country":      "OSC Country",
+      "phone":        "OSC Business Phone",
+      "url":          "OSC Business Web URL",
+      "sector":       "Sector",
+      "sector_other": "Sector (Other)",
+      "employees":    "Number of Employees",
+      "hlo_cage":     "Highest Level Owner (HLO) CAGE Code",
+      "cage_scope":   "CAGE Code(s) in Scope",
+      "scope":        "Scope",
+      "scope_desc":   "Scope Description",
+      "contract_date":"C3PAO Contract Date",
+      "plan_start":   "Assessment Planning Start Date",
+      "plan_end":     "Assessment Planning Completion Date",
+      "standard":     "Assessment Standard"
+    },
+    "scope_values": ["Enterprise", "Enclave"],
+    "standard_values": ["NIST SP 800-171 Revision 2", "NIST SP 800-171 Revision 3"],
+    "cmmc_l2_expected_standard": "NIST SP 800-171 Revision 2",
+    "scope_description_max_chars": 1000,
+    "date_format_label": "DD-MMM-YYYY",
+    "us_country_aliases": ["USA", "US", "U.S.", "U.S.A.", "America", "United States of America"],
+    "guidance_restore": {
+      "url": "Use a fully complete and valid URL (the “http://” or “https://” is required). Example: https://www.disa.mil/",
+      "scope": "Enterprise\nEnclave",
+      "standard": "NIST SP 800-171 Revision 2\nNIST SP 800-171 Revision 3",
+      "sector": "__SECTOR_LIST__"
+    }
+  },
+
+  "sectors": [
+    "Application Service Provider", "Chemical", "Cloud Service Provider", "Commercial Facilities",
+    "Communications", "Critical Manufacturing", "Dams", "Defense Industrial Base", "Emergency Services",
+    "Food and Agriculture", "Government Facilities", "Healthcare and Public Health", "Information Technology",
+    "Nuclear Reactors, Materials, and Waste", "Security Service Provider", "Transportation Systems",
+    "Water and Wastewater Systems", "Other"
+  ],
+
+  "esp_cmmc_status_values": ["None", "Level 2", "Level 3"],
+
+  "asset_inventory": {
+    "sheet_main": "Main Scoped Assets",
+    "sheet_esp": "Consolidated External Service P",
+    "sheet_oos": "Out of Scope Areas of Ops",
+    "main_header_row": 3,
+    "esp_header_row": 5,
+    "oos_header_row": 2,
+    "asset_categories": ["Controlled Unclassified Information", "Security Protection", "Contractor Risk Managed", "Specialized", "Out-of-Scope"],
+    "asset_types": ["People", "Technology", "Facilities", "None"],
+    "esp_sample_markers": ["SAMPLE RECORD", "j.smith@emailtest.com"],
+    "example_asset_markers": ["<City, State>", "Apricorn 3z USB-A 256GB Thumb Drive", "Windows 11 HP OmniBook 7", "Windows 10 Laptop HP Elitebook 840", "Main Entrance Man Doors (Enclave, Telco Room)"],
+    "cloud_keywords": ["fedramp", "saas", "paas", "iaas", "cloud", "gcc", "govcloud", "azure", "aws", "csp", "msp", "mssp", "hosted"],
+    "fedramp_id_regex": "\\b(F|FR)\\d{8,10}\\b"
+  },
+
+  "drl": {
+    "required_sheets": ["Evidence Plan", "Physical Facilities", "Physical Security", "171 R2 Control Ownership", "OSC Assessment Team"],
+    "expected_objectives": 320,
+    "expected_requirements": 110,
+    "mapping_evidence_types": ["document", "artifact"],
+    "facility_ownership_values": ["Rented", "Leased", "Own", "Other"],
+    "yes_no": ["Yes", "No"],
+    "unanswered_physical_security_marker": "[SELECT FROM"
+  },
+
+  "sap": {
+    "score_types": ["Enterprise", "Enclave", "Contract"],
+    "sprs_min": -203,
+    "sprs_max": 110,
+    "yes_no_items": [
+      {"id": "4.01", "key": "attended the Audit Preparation Presentation", "label": "Key OSC personnel attended the Audit Preparation Presentation"},
+      {"id": "4.02", "key": "Finalized System Security Plan (SSP) delivery", "label": "Finalized SSP delivered"},
+      {"id": "4.03", "key": "marked as Inherited by the OSC within the final submitted SSP", "label": "Inherited controls marked in SSP"},
+      {"id": "4.04", "key": "ESP dependencies for inheritance are documented", "label": "ESP inheritance dependencies documented in SSP"},
+      {"id": "4.05", "key": "Finalized documentation delivery", "label": "Finalized documentation delivered"},
+      {"id": "4.06", "key": "Folder structure was established", "label": "Folder structure established"},
+      {"id": "4.07", "key": "Asset Inventory Scoping file", "label": "Asset Inventory Scoping file completed", "links": "asset_inventory"},
+      {"id": "4.08", "key": "Assessment Document Request List file", "label": "Document Request List completed and uploaded", "links": "drl"},
+      {"id": "4.09", "key": "CMMC assessment confirmation", "label": "Scope reviewed and validated internally per 32 CFR 170.19(c)"},
+      {"id": "4.10", "key": "Affirmations of understanding", "label": "Affirmations of understanding"},
+      {"id": "4.11", "key": "FedRAMP Equivalency Memorandum", "label": "FedRAMP Equivalency Memorandum understood"},
+      {"id": "4.12", "key": "FIPS Requirements have been reviewed", "label": "FIPS requirements reviewed (SC.L2-3.13.11)"},
+      {"id": "4.13", "key": "Scoping & asset classifications", "label": "Scoping and asset classifications per Scoping Guide"},
+      {"id": "4.14", "key": "Readiness assertion", "label": "Readiness assertion"},
+      {"id": "4.15", "key": "Areas of Operations and BUs that are not in scope", "label": "Out of scope areas added to Asset Inventory", "links": "oos"},
+      {"id": "4.16", "key": "OSC Key Personnel were added", "label": "OSC key personnel added to DRL OSC Assessment Team tab", "links": "team"},
+      {"id": "4.17", "key": "not eligible for POA&M treatment", "label": "POA&M eligibility acknowledged"},
+      {"id": "9.01", "key": "No conflicts of interest have been identified", "label": "COI: no conflicts identified", "group": "coi"},
+      {"id": "9.02", "key": "Potential conflicts of interest were identified", "label": "COI: conflicts identified and mitigated", "group": "coi"}
+    ],
+    "placeholder_patterns": [
+      "<Yes or No>", "<Select One[^>]*>", "<Date>", "<System Name>", "<insert[^>]*>", "\\[insert[^\\]]*\\]",
+      "SSP Version X\\.X", "Section X\\b", "Page X\\b", "_{4,}", "Name/Affirming Official"
+    ]
+  }
+}
